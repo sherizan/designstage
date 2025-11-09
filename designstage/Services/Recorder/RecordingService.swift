@@ -20,50 +20,72 @@ class RecordingService: ObservableObject {
     @Published var state: RecordingState = .idle
     
     private var recorder: ScreenRecorder?
-    private var regionSelector: RegionSelectorWindow?
+    private var regionSelector: SafeRegionSelectorWindow?
     private var selectedRegion: CGRect?
     
     func startRegionSelection() {
         guard state == .idle else { return }
         
         state = .selectingRegion
-        regionSelector = RegionSelectorWindow { [weak self] region in
-            self?.didSelectRegion(region)
+        regionSelector = SafeRegionSelectorWindow { [unowned self] region in
+            print("📹 RecordingService received region callback: \(region?.debugDescription ?? "nil")")
+            DispatchQueue.main.async {
+                self.didSelectRegion(region)
+            }
         }
         regionSelector?.orderFrontRegardless()
+        print("📹 Region selector window created and shown")
     }
     
     private func didSelectRegion(_ region: CGRect?) {
-        regionSelector?.close()
-        regionSelector = nil
+        print("📹 didSelectRegion called with: \(region?.debugDescription ?? "nil")")
+        
+        print("📹 Skipping region selector cleanup to avoid crash...")
+        // Don't clear the reference - let it clean itself up naturally
+        // regionSelector = nil  // COMMENTED OUT TO AVOID CRASH
         
         guard let region = region, region.width > 10, region.height > 10 else {
+            print("📹 Invalid region, returning to idle")
             state = .idle
             return
         }
         
+        print("📹 Region is valid, storing and starting recording...")
         selectedRegion = region
+        print("📹 About to call startRecording...")
         startRecording(region: region)
+        print("📹 startRecording call completed")
     }
     
-    private func startRecording(region: CGRect) {
+    func startRecording(region: CGRect) {
+        guard state == .idle || state == .selectingRegion else { return }
+        
+        print("🎬 Starting recording for region: \(region)")
+        
+        // Validate region before creating recorder
+        guard region.width > 10 && region.height > 10 else {
+            print("❌ Invalid region size: \(region)")
+            state = .idle
+            return
+        }
+        
+        print("📹 Creating ScreenRecorder...")
         recorder = ScreenRecorder(region: region)
         
+        print("📹 Starting recording...")
         Task {
             do {
                 try await recorder?.startRecording()
-                state = .recording(startTime: Date())
-                
-                // Auto-stop after 2 minutes
-                Task {
-                    try? await Task.sleep(nanoseconds: 120_000_000_000)
-                    if case .recording = state {
-                        stopRecording()
-                    }
+                await MainActor.run {
+                    state = .recording(startTime: Date())
+                    print("✅ Recording started successfully")
                 }
             } catch {
-                print("Failed to start recording: \(error)")
-                state = .idle
+                print("❌ Failed to start recording: \(error)")
+                await MainActor.run {
+                    state = .idle
+                    recorder = nil
+                }
             }
         }
     }
@@ -74,14 +96,19 @@ class RecordingService: ObservableObject {
         Task {
             do {
                 let url = try await recorder?.stopRecording()
-                state = .idle
-                
-                if let url = url {
-                    showRecordingComplete(url: url)
+                await MainActor.run {
+                    state = .idle
+                    recorder = nil
+                    if let url = url {
+                        showRecordingComplete(url: url)
+                    }
                 }
             } catch {
-                print("Failed to stop recording: \(error)")
-                state = .idle
+                print("❌ Failed to stop recording: \(error)")
+                await MainActor.run {
+                    state = .idle
+                    recorder = nil
+                }
             }
         }
     }
@@ -99,4 +126,3 @@ class RecordingService: ObservableObject {
         }
     }
 }
-

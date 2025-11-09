@@ -13,6 +13,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusItemController: StatusItemController?
     private var overlayService: OverlayService?
     private var hotkeyManager: HotkeyManager?
+    private var recordingService: RecordingService?
     
     func applicationDidFinishLaunching(_ notification: Notification) {
         // Hide from Dock - menu bar app only
@@ -21,6 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Initialize services
         overlayService = OverlayService()
         hotkeyManager = HotkeyManager()
+        recordingService = RecordingService()
         
         // Set up menu bar
         setupMenuBar()
@@ -52,7 +54,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         statusItemController = StatusItemController(
             statusItem: statusItem,
-            overlayService: overlayService
+            overlayService: overlayService,
+            recordingService: recordingService
         )
     }
     
@@ -81,10 +84,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        // ⌘⇧R - Record Region
-        hotkeyManager.register(keyCode: 15, modifiers: [.command, .shift]) {
-            // TODO: Implement recording
-            print("Record region triggered")
+        // ⌘⇧R - Toggle Recording (Start/Stop)
+        hotkeyManager.register(keyCode: 15, modifiers: [.command, .shift]) { [weak self] in
+            Task { @MainActor [weak self] in
+                self?.toggleRecording()
+            }
         }
         
         // ⌘⇧S - Export Snapshot
@@ -98,6 +102,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Screen Recording permission required for overlay and recording
         Task {
             await PermissionsManager.shared.requestScreenRecordingPermission()
+        }
+    }
+    
+    @MainActor
+    private func toggleRecording() {
+        guard let service = recordingService else { return }
+        
+        switch service.state {
+        case .idle:
+            service.startRegionSelection()
+        case .selectingRegion:
+            // Already selecting region, do nothing (or could cancel)
+            break
+        case .recording:
+            service.stopRecording()
         }
     }
 }

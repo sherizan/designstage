@@ -10,6 +10,7 @@ import Cocoa
 class StatusItemController {
     private let statusItem: NSStatusItem?
     private weak var overlayService: OverlayService?
+    private weak var recordingService: RecordingService?
     private var menu: NSMenu
     private var stateObserver: Any?
     
@@ -19,9 +20,10 @@ class StatusItemController {
     private var currentColor: DrawingColor = .green
     private var currentBrushWidth: BrushWidth = .regular
     
-    init(statusItem: NSStatusItem?, overlayService: OverlayService?) {
+    init(statusItem: NSStatusItem?, overlayService: OverlayService?, recordingService: RecordingService?) {
         self.statusItem = statusItem
         self.overlayService = overlayService
+        self.recordingService = recordingService
         self.menu = NSMenu()
         
         // Load saved preferences
@@ -262,8 +264,21 @@ class StatusItemController {
     }
     
     @objc private func startRecording() {
-        // TODO: Implement recording
-        print("Start recording")
+        Task { @MainActor in
+            guard let service = recordingService else { return }
+            
+            switch service.state {
+            case .idle:
+                print("🟡 Menu: Starting recording")
+                service.startRegionSelection()
+            case .selectingRegion:
+                print("🟡 Menu: Already selecting region")
+                break
+            case .recording:
+                print("🟡 Menu: Stopping recording")
+                service.stopRecording()
+            }
+        }
     }
     
     @objc private func openFramePreset(_ sender: NSMenuItem) {

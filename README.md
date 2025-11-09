@@ -8,9 +8,22 @@ A lightweight macOS menu bar app that lets creators draw, highlight, record, and
 - **🧹 Clear Ink**: Instantly wipe drawings (`⌘⇧C`)
 - **🌈 Color Presets**: 5 vibrant colors (Yellow, Red, Blue, Green, White)
 - **🔥 Fade Ink**: Strokes auto-fade after configurable durations (Off, 5s, 10s, 20s)
-- **🎥 Screen Recorder**: Select region and record to .mov or .gif (`⌘⇧R`)
+- **🎥 Screen Recorder**: Select region with preset dimensions (1080x1080, 1280x720, 393x852), drag edges to customize, and record to .mov with video gallery (`⌘⇧R`)
 - **📱 Device Frames**: Preset floating windows (iPhone 15 Pro, iPad Pro, 1080p, 1440p, 4K)
 - **💾 Export Snapshot**: Capture screen with overlays (`⌘⇧S`)
+
+## 🎬 Recording Feature Highlights
+
+The enhanced screen recording feature provides a complete recording workflow:
+
+1. **Interactive Region Selection**: Start with preset dimensions (Square, Landscape, Portrait)
+2. **Draggable Edges**: Customize recording area by dragging corners and edges
+3. **Live Dimension Display**: See exact pixel dimensions in real-time
+4. **Recording Control Bar**: Beautiful UI with record button, preset selector, and dimension display
+5. **Video Gallery**: Thumbnail preview of all recordings with duration and quick actions
+6. **High-Quality Output**: H.264 MOV files at 2× resolution (Retina) saved to Movies folder
+
+See [RECORDING_GUIDE.md](RECORDING_GUIDE.md) for detailed usage instructions.
 
 ## 🏗 Architecture
 
@@ -41,15 +54,21 @@ DesignStage/
 │   ├── FadeEngine.swift          # Actor-based stroke fading
 │   ├── HotkeyManager.swift       # Global shortcuts (Carbon API)
 │   └── Recorder/
-│       ├── RecordingService.swift       # Recording state machine
-│       ├── RegionSelectorWindow.swift   # Interactive region picker
-│       └── ScreenRecorder.swift         # ScreenCaptureKit integration
+│       ├── EnhancedRecordingService.swift  # Enhanced recording state machine
+│       ├── EnhancedRegionSelectorWindow.swift  # Interactive region with draggable edges
+│       ├── RecordingControlBar.swift       # Control bar UI with presets
+│       ├── VideoThumbnailGallery.swift     # Gallery view for recordings
+│       ├── ScreenRecorder.swift         # ScreenCaptureKit integration
+│       ├── RecordingService.swift       # Basic recording (legacy)
+│       └── RegionSelectorWindow.swift   # Basic region picker (legacy)
 │
 ├── Shared/                       # Utilities & models
 │   ├── Models/
 │   │   ├── Stroke.swift          # Drawing stroke data
 │   │   ├── DrawingColor.swift    # Color presets
-│   │   └── FadeMode.swift        # Fade duration modes
+│   │   ├── FadeMode.swift        # Fade duration modes
+│   │   ├── RecordingPreset.swift # Recording dimension presets
+│   │   └── RecordedVideo.swift   # Video metadata model
 │   ├── Utilities/
 │   │   └── PermissionsManager.swift  # Screen recording permissions
 │   └── Extensions/
@@ -112,7 +131,7 @@ Grant these in **System Preferences > Privacy & Security > Screen Recording**
 | `⌘⇧D` | Toggle drawing mode |
 | `⌘⇧C` | Clear all drawings |
 | `⌘⇧F` | Cycle fade mode |
-| `⌘⇧R` | Start region recording |
+| `⌘⇧R` | Start/Stop recording |
 | `⌘⇧S` | Export snapshot |
 
 ## 📦 Distribution
