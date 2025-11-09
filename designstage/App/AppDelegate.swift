@@ -58,21 +58,27 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     private func registerHotkeys() {
         guard let hotkeyManager = hotkeyManager,
-              let overlayService = overlayService else { return }
+              overlayService != nil else { return }
         
         // ⌘⇧D - Toggle Draw
-        hotkeyManager.register(keyCode: 2, modifiers: [.command, .shift]) { [weak overlayService] in
-            Task { await MainActor.run { overlayService?.toggleDrawing() } }
+        hotkeyManager.register(keyCode: 2, modifiers: [.command, .shift]) { [weak self] in
+            Task { @MainActor [weak self] in
+                self?.overlayService?.toggleDrawing()
+            }
         }
         
         // ⌘⇧C - Clear Screen
-        hotkeyManager.register(keyCode: 8, modifiers: [.command, .shift]) { [weak overlayService] in
-            Task { await MainActor.run { overlayService?.clearDrawing() } }
+        hotkeyManager.register(keyCode: 8, modifiers: [.command, .shift]) { [weak self] in
+            Task { @MainActor [weak self] in
+                self?.overlayService?.clearDrawing()
+            }
         }
         
         // ⌘⇧F - Toggle Fade
-        hotkeyManager.register(keyCode: 3, modifiers: [.command, .shift]) { [weak overlayService] in
-            Task { await MainActor.run { overlayService?.cycleFadeMode() } }
+        hotkeyManager.register(keyCode: 3, modifiers: [.command, .shift]) { [weak self] in
+            Task { @MainActor [weak self] in
+                self?.overlayService?.cycleFadeMode()
+            }
         }
         
         // ⌘⇧R - Record Region

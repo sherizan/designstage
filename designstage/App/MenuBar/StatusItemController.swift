@@ -44,7 +44,7 @@ class StatusItemController {
     }
     
     private func setupStateObserver() {
-        guard let overlayService = overlayService else { return }
+        guard overlayService != nil else { return }
         
         stateObserver = NotificationCenter.default.addObserver(
             forName: NSNotification.Name("DrawingStateChanged"),
@@ -191,6 +191,20 @@ class StatusItemController {
         
         menu.addItem(NSMenuItem.separator())
         
+        // MARK: - Settings
+        
+        // Launch at Login
+        let launchItem = NSMenuItem(
+            title: "Launch at Login",
+            action: #selector(toggleLaunchAtLogin),
+            keyEquivalent: ""
+        )
+        launchItem.target = self
+        launchItem.state = PreferencesManager.shared.launchAtLogin ? .on : .off
+        menu.addItem(launchItem)
+        
+        menu.addItem(NSMenuItem.separator())
+        
         // MARK: - Quit
         
         // Quit
@@ -260,6 +274,11 @@ class StatusItemController {
     @objc private func exportSnapshot() {
         // TODO: Implement snapshot export
         print("Export snapshot")
+    }
+    
+    @objc private func toggleLaunchAtLogin() {
+        PreferencesManager.shared.launchAtLogin.toggle()
+        buildMenu()
     }
     
     @objc private func quit() {

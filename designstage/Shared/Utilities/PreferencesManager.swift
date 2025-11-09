@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import ServiceManagement
 
 class PreferencesManager {
     static let shared = PreferencesManager()
@@ -17,6 +18,7 @@ class PreferencesManager {
         static let drawingColor = "drawingColor"
         static let fadeMode = "fadeMode"
         static let brushWidth = "brushWidth"
+        static let launchAtLogin = "launchAtLogin"
     }
     
     private init() {}
@@ -54,6 +56,32 @@ class PreferencesManager {
         }
         set {
             defaults.set(newValue.rawValue, forKey: Keys.brushWidth)
+        }
+    }
+    
+    // MARK: - Launch at Login
+    
+    var launchAtLogin: Bool {
+        get {
+            defaults.bool(forKey: Keys.launchAtLogin)
+        }
+        set {
+            defaults.set(newValue, forKey: Keys.launchAtLogin)
+            setLaunchAtLogin(enabled: newValue)
+        }
+    }
+    
+    private func setLaunchAtLogin(enabled: Bool) {
+        if #available(macOS 13.0, *) {
+            do {
+                if enabled {
+                    try SMAppService.mainApp.register()
+                } else {
+                    try SMAppService.mainApp.unregister()
+                }
+            } catch {
+                print("Failed to \(enabled ? "enable" : "disable") launch at login: \(error.localizedDescription)")
+            }
         }
     }
     

@@ -34,8 +34,6 @@ class HotkeyManager {
         var hotKeyRef: EventHotKeyRef?
         let carbonModifiers = convertToCarbonModifiers(modifiers)
         
-        var eventType = EventTypeSpec(eventClass: OSType(kEventClassKeyboard), eventKind: UInt32(kEventHotKeyPressed))
-        
         let status = RegisterEventHotKey(
             keyCode,
             carbonModifiers,
