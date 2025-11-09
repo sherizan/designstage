@@ -6,43 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		B068F1912E10664A005AA07E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B068F17A2E106648005AA07E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B068F1812E106648005AA07E;
-			remoteInfo = designstage;
-		};
-		B068F19B2E10664A005AA07E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B068F17A2E106648005AA07E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B068F1812E106648005AA07E;
-			remoteInfo = designstage;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		B068F1822E106648005AA07E /* designstage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = designstage.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B068F1902E10664A005AA07E /* designstageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = designstageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B068F19A2E10664A005AA07E /* designstageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = designstageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B068F1822E106648005AA07E /* Design Stage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Design Stage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B068F1842E106648005AA07E /* designstage */ = {
+		B068F1842E106648005AA07E /* DesignStage */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = designstage;
-			sourceTree = "<group>";
-		};
-		B068F1932E10664A005AA07E /* designstageTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = designstageTests;
-			sourceTree = "<group>";
-		};
-		B068F19D2E10664A005AA07E /* designstageUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = designstageUITests;
+			path = DesignStage;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -55,29 +26,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B068F18D2E10664A005AA07E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B068F1972E10664A005AA07E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		B068F1792E106648005AA07E = {
 			isa = PBXGroup;
 			children = (
-				B068F1842E106648005AA07E /* designstage */,
-				B068F1932E10664A005AA07E /* designstageTests */,
-				B068F19D2E10664A005AA07E /* designstageUITests */,
+				B068F1842E106648005AA07E /* DesignStage */,
 				B068F1832E106648005AA07E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,9 +40,7 @@
 		B068F1832E106648005AA07E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B068F1822E106648005AA07E /* designstage.app */,
-				B068F1902E10664A005AA07E /* designstageTests.xctest */,
-				B068F19A2E10664A005AA07E /* designstageUITests.xctest */,
+				B068F1822E106648005AA07E /* Design Stage.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,60 +61,14 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				B068F1842E106648005AA07E /* designstage */,
+				B068F1842E106648005AA07E /* DesignStage */,
 			);
 			name = designstage;
 			packageProductDependencies = (
 			);
 			productName = designstage;
-			productReference = B068F1822E106648005AA07E /* designstage.app */;
+			productReference = B068F1822E106648005AA07E /* Design Stage.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B068F18F2E10664A005AA07E /* designstageTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B068F1A72E10664A005AA07E /* Build configuration list for PBXNativeTarget "designstageTests" */;
-			buildPhases = (
-				B068F18C2E10664A005AA07E /* Sources */,
-				B068F18D2E10664A005AA07E /* Frameworks */,
-				B068F18E2E10664A005AA07E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B068F1922E10664A005AA07E /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B068F1932E10664A005AA07E /* designstageTests */,
-			);
-			name = designstageTests;
-			packageProductDependencies = (
-			);
-			productName = designstageTests;
-			productReference = B068F1902E10664A005AA07E /* designstageTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B068F1992E10664A005AA07E /* designstageUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B068F1AA2E10664A005AA07E /* Build configuration list for PBXNativeTarget "designstageUITests" */;
-			buildPhases = (
-				B068F1962E10664A005AA07E /* Sources */,
-				B068F1972E10664A005AA07E /* Frameworks */,
-				B068F1982E10664A005AA07E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B068F19C2E10664A005AA07E /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B068F19D2E10664A005AA07E /* designstageUITests */,
-			);
-			name = designstageUITests;
-			packageProductDependencies = (
-			);
-			productName = designstageUITests;
-			productReference = B068F19A2E10664A005AA07E /* designstageUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
@@ -175,14 +82,6 @@
 				TargetAttributes = {
 					B068F1812E106648005AA07E = {
 						CreatedOnToolsVersion = 16.4;
-					};
-					B068F18F2E10664A005AA07E = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = B068F1812E106648005AA07E;
-					};
-					B068F1992E10664A005AA07E = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = B068F1812E106648005AA07E;
 					};
 				};
 			};
@@ -201,28 +100,12 @@
 			projectRoot = "";
 			targets = (
 				B068F1812E106648005AA07E /* designstage */,
-				B068F18F2E10664A005AA07E /* designstageTests */,
-				B068F1992E10664A005AA07E /* designstageUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		B068F1802E106648005AA07E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B068F18E2E10664A005AA07E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B068F1982E10664A005AA07E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,34 +122,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B068F18C2E10664A005AA07E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B068F1962E10664A005AA07E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		B068F1922E10664A005AA07E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B068F1812E106648005AA07E /* designstage */;
-			targetProxy = B068F1912E10664A005AA07E /* PBXContainerItemProxy */;
-		};
-		B068F19C2E10664A005AA07E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B068F1812E106648005AA07E /* designstage */;
-			targetProxy = B068F19B2E10664A005AA07E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		B068F1A22E10664A005AA07E /* Debug */ = {
@@ -323,7 +179,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -381,7 +237,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -394,7 +250,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = designstage/designstage.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DesignStage/DesignStage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -402,15 +258,18 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSAccessibilityUsageDescription = "Design Stage uses accessibility features to enable global hotkeys for drawing and recording.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025. All rights reserved.";
+				INFOPLIST_KEY_NSScreenCaptureDescription = "Design Stage needs screen recording permission to display the drawing overlay and capture screen recordings.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = sherizan.designstage;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
+				PRODUCT_NAME = "Design Stage";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -421,7 +280,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = designstage/designstage.entitlements;
+				CODE_SIGN_ENTITLEMENTS = DesignStage/DesignStage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -429,85 +288,20 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSAccessibilityUsageDescription = "Design Stage uses accessibility features to enable global hotkeys for drawing and recording.";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2025. All rights reserved.";
+				INFOPLIST_KEY_NSScreenCaptureDescription = "Design Stage needs screen recording permission to display the drawing overlay and capture screen recordings.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = sherizan.designstage;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
+				PRODUCT_NAME = "Design Stage";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-			};
-			name = Release;
-		};
-		B068F1A82E10664A005AA07E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BEJ53HUAE7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sherizan.designstageTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/designstage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/designstage";
-			};
-			name = Debug;
-		};
-		B068F1A92E10664A005AA07E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BEJ53HUAE7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sherizan.designstageTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/designstage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/designstage";
-			};
-			name = Release;
-		};
-		B068F1AB2E10664A005AA07E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BEJ53HUAE7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sherizan.designstageUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = designstage;
-			};
-			name = Debug;
-		};
-		B068F1AC2E10664A005AA07E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = BEJ53HUAE7;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sherizan.designstageUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = designstage;
 			};
 			name = Release;
 		};
@@ -528,24 +322,6 @@
 			buildConfigurations = (
 				B068F1A52E10664A005AA07E /* Debug */,
 				B068F1A62E10664A005AA07E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B068F1A72E10664A005AA07E /* Build configuration list for PBXNativeTarget "designstageTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B068F1A82E10664A005AA07E /* Debug */,
-				B068F1A92E10664A005AA07E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B068F1AA2E10664A005AA07E /* Build configuration list for PBXNativeTarget "designstageUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B068F1AB2E10664A005AA07E /* Debug */,
-				B068F1AC2E10664A005AA07E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
