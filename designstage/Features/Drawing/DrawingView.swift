@@ -31,6 +31,10 @@ class DrawingView: NSView {
     
     override func mouseDown(with event: NSEvent) {
         let location = convert(event.locationInWindow, from: nil)
+        
+        // Ignore clicks outside visible bounds (e.g., menu bar area)
+        guard bounds.contains(location) else { return }
+        
         currentStroke = Stroke(
             points: [location],
             color: currentColor,
@@ -41,6 +45,10 @@ class DrawingView: NSView {
     
     override func mouseDragged(with event: NSEvent) {
         let location = convert(event.locationInWindow, from: nil)
+        
+        // Only add points within visible bounds
+        guard bounds.contains(location) else { return }
+        
         currentStroke?.points.append(location)
         needsDisplay = true
     }

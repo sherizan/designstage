@@ -20,7 +20,8 @@ class OverlayWindow: NSPanel {
         )
         
         // Configure as transparent overlay
-        self.level = .screenSaver
+        // Use floating level to stay below menu bar but above regular windows
+        self.level = NSWindow.Level(rawValue: Int(CGWindowLevelForKey(.floatingWindow)))
         self.backgroundColor = .clear
         self.isOpaque = false
         self.hasShadow = false
@@ -42,11 +43,21 @@ class OverlayWindow: NSPanel {
     }
     
     @objc private func updateFrame() {
-        // Calculate union of all screen frames
+        // Calculate union of all screen frames, excluding menu bar area
         var totalFrame = NSRect.zero
+        
         for screen in NSScreen.screens {
-            totalFrame = totalFrame.union(screen.frame)
+            var screenFrame = screen.frame
+            
+            // Use visibleFrame which already excludes menu bar and dock
+            if screen == NSScreen.main {
+                // visibleFrame gives us the area below menu bar
+                screenFrame = screen.visibleFrame
+            }
+            
+            totalFrame = totalFrame.union(screenFrame)
         }
+        
         self.setFrame(totalFrame, display: true)
     }
     
